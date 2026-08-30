@@ -9,16 +9,12 @@ solicitudICMP = ICMP(
 
 palabra_incriptada = cesar.cifrar_cesar("criptografia y seguridad en redes", 0)
 
-
-
-paquete = IP(dst="192.168.18.12") / solicitudICMP / palabra_incriptada
-paquete.show()
-
-respuesta = sr1(paquete, timeout=2)
-
-if respuesta and respuesta.haslayer(ICMP):
-    if respuesta[ICMP].type == 0:  # Echo Reply
-        print("Respuesta recibida:")
-        texto_resultante = respuesta.load.decode("utf-8")
-else:
-    print("No se recibió respuesta o hubo un error en la comunicación.")
+for caracter in palabra_incriptada:
+    try:
+        print(f"caracter: {caracter}")
+        paquete = IP(dst="8.8.8.8") / solicitudICMP / caracter
+        respuesta = sr1(paquete, timeout=2)
+    except Exception as e:
+        print(f"No se recibió respuesta para el caracter: {caracter}")
+        
+        
