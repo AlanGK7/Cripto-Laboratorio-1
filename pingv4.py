@@ -9,12 +9,12 @@ solicitudICMP = ICMP(
     seq=1  # Sequence Number
 )
 
-palabra_incriptada = cesar.cifrar_cesar("criptografia y seguridad en redes", 9)
-print(f"palabra_incriptada: {palabra_incriptada}")
+palabra_encriptada = cesar.cifrar_cesar("criptografia y seguridad en redes", 9)
+print(f"palabra_encriptada: {palabra_encriptada}")
 
 secuencia = bytes(range(16,56))
 
-for caracter in palabra_incriptada:
+for caracter in palabra_encriptada:
     print(f"caracter: {caracter}")
     
     tiempo_actual= int(time.time())
