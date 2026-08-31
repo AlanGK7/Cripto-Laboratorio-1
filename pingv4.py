@@ -25,7 +25,7 @@ for caracter in palabra_incriptada:
     ceros = b'\x00' * 5
     
     palabra_48bytes = caracter + resto + ceros + secuencia
-    paquete = IP(dst="8.8.8.8") / solicitudICMP / palabra_48bytes
+    paquete = IP(dst="127.0.0.1") / solicitudICMP / palabra_48bytes
     respuesta = sr1(paquete, timeout=2)
     solicitudICMP.seq += 1  # Incrementar el número de secuencia para el siguiente paquete
     time.sleep(1)  # esperar 1 segundo antes de enviar el siguiente paquete
